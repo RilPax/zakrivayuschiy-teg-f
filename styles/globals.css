@@ -6,10 +6,12 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
+  background-color: var(--background-color);
 }
 
 h1,
@@ -24,6 +26,7 @@ ol,
 li {
   margin: 0;
   padding: 0;
+  color: var(--main-color);
 }
 
 a {

@@ -4,3 +4,58 @@
 ✦ theme-light — класс светлой темы
 ✦ не забудьте описать стили для изменения темы через медизапрос пользовательских предпочтений
 */
+:root.theme-light {
+  --liked: red;
+  --main-color: #000000;
+  --background-color: #FFFFFF;
+  --font-weight-regular: 400;
+  --background-gradient-color-horizontal-first: #d3d3d3;
+  --background-gradient-color-horizontal-second: transparent;
+  --background-gradient-color-vertical-first: #e7e7e7;
+  --background-gradient-color-vertical-second: #1a1a1a;
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --contour-status: var(--main-color);
+}
+
+:root.theme-dark {
+  --liked: red;
+  --main-color: #00CC14;
+  --background-color: #000000;
+  --background-gradient-color-horizontal-first: #000;
+  --background-gradient-color-horizontal-second: transparent;
+  --background-gradient-color-vertical-first: #007f0c;
+  --background-gradient-color-vertical-second: #004306;
+  --fw-regular: 465;
+  --fw-bold: 785;
+  --contour-status: var(--main-color);
+}
+
+@media (prefers-color-scheme: light) {
+  :root.theme-auto {
+    --main-color: #000000;
+    --background-color: #FFFFFF;
+    --font-weight-regular: 400;
+    --background-gradient-color-horizontal-first: #d3d3d3;
+    --background-gradient-color-horizontal-second: transparent;
+    --background-gradient-color-vertical-first: #e7e7e7;
+    --background-gradient-color-vertical-second: #1a1a1a;
+    --fw-regular: 400;
+    --fw-bold: 700;
+    --contour-status: var(--main-color);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.theme-auto {
+    --main-color: #00CC14;
+    --background-color: #000000;
+    --background-gradient-color-horizontal-first: #000;
+    --background-gradient-color-horizontal-second: transparent;
+    --background-gradient-color-vertical-first: #007f0c;
+    --background-gradient-color-vertical-second: #004306;
+    --fw-regular: 465;
+    --fw-bold: 785;
+    --contour-status: var(--main-color);
+  }
+}
