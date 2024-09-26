@@ -37,9 +37,9 @@
       var(--background-gradient-color-vertical-second) 2px,
       var(--background-gradient-color-vertical-second) 4px
     );
-    
   background-size: cover;
-  background-position: fixed;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .header {
@@ -48,7 +48,6 @@
   align-items: center;
   gap: 2px;
   width: 100%;
-  min-height: 368px;
   margin: 100px 0px;
   background-color: var(--background-color);
   border: 2px solid var(--main-color);
@@ -67,13 +66,13 @@
 }
 
 .header-heading-decorative-stroke {
-  font-size: 65px;
-  line-height: 65px;
+  font-size: clamp(49px, calc(49px + (65 - 49) * ((100vw - 375px) / (1440 - 375))), 65px);
+  line-height: clamp(49px, calc(49px + (65 - 49) * ((100vw - 375px) / (1440 - 375))), 65px);
 }
 
 .header-heading-next-stroke {
-  font-size: 23px;
-  line-height: 23px;
+  font-size: clamp(14px, calc(14px + (23 - 14) * ((100vw - 375px) / (1440 - 375))), 23px);
+  line-height: clamp(14px, calc(14px + (23 - 14) * ((100vw - 375px) / (1440 - 375))), 23px);
 }
 
 .theme-menu__list {
@@ -129,7 +128,7 @@
   font-size: 14px;
   transform: translateX(-20px);
   filter: opacity(0.6);
-  animation: button-active 0.5s  ease-in-out infinite;
+  animation: button-active 2s steps(1) infinite;
 }
 
 .main {
@@ -148,7 +147,7 @@
 
 .card-heading {
   font-family: var(--font-family-Inter-variable);
-  font-weight: var(--fw-bold);
+  font-variation-settings: "wght" var(--fw-bold);
   font-size: 18px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -162,6 +161,14 @@
   border-right: none;
 }
 
+@supports((-webkit-text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: var(--background-color))) {
+  .image-text {
+      -webkit-text-stroke: 1px var(--background-color);
+      text-shadow: 1px var(--background-color);
+      text-shadow: none;
+  }
+} 
+
 .image-text {
   position: absolute;
   font-family: var(--font-family-press-start);
@@ -171,49 +178,44 @@
   top: 25px;
   right: 25px;
   filter: opacity(0.5);
-  -webkit-text-stroke: 1px var(--background-color);
+  z-index: 2;
 }
-
-@supports((text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: var(--background-color))) {
-  .image-text {
-      -webkit-text-stroke: 1px var(--background-color);
-      text-shadow: 1px var(--background-color);
-      text-shadow: none;
-  }
-} 
 
 .image {
   display: block;
   width: 100%;
 }
 
-.image-filter-1 {
+.image-filter-multiple {
+  filter: invert(1) brightness(200%) saturate(60%) hue-rotate(90deg);
+}
+
+.image-filter-contrast {
   filter: contrast(2);;
 }
 
-.image-filter-2 {
-  filter: 
-  grayscale(100%);
+.image-filter-grayscale {
+  filter: grayscale(100%);
 }
 
-.image-filter-3 {
+.image-filter-saturate {
   filter: saturate(3);
 }
 
-.image-filter-4 {
+.image-filter-hue-rotate {
   filter: hue-rotate(90deg);
 }
 
-.image-filter-5 {
+.image-filter-sepia {
   filter: sepia(80%);
 }
 
-.image-filter-6 {
+.image-filter-invert {
   filter: invert(0.7);
 } 
 
 
-.image-filter-7 {
+.image-filter-blur {
   filter: blur(0.3rem);
 }
 
@@ -226,7 +228,7 @@
 
 .paragrapgh {
   font-family: var(--font-family-Inter-variable);
-  font-weight: var(--fw-regular);
+  font-variation-settings: "wght" var(--fw-regular);
   font-size: 18px;
   line-height: 21px;;
 }
@@ -249,43 +251,42 @@
   outline: none;
   cursor: pointer;
   margin-right: 6px;
-  transform: translateY(3px);
+  transform: translateY(2px);
   transition: box-shadow 0.5s ease;
   box-shadow: none;
 }
 
 .card__icon-button:focus-visible {
   box-shadow: 0px 0px 0px 2px var(--main-color);
-  transition: box-shadow 0.5s ease;
 }
 
 .card__icon-button .like-icon .core {
-  transition: fill 0.3s ease 0.03s;
+  transition: fill 0.3s linear 0.05s;
   fill: var(--background-color);
 }
 
 .card__icon-button:hover .like-icon .core {
   fill: var(--main-color);
-  transition: fill 0.3s ease;
+  transition: fill 0.3s linear;
 }
 
 .card__icon-button .like-icon .main-body{
-  transition: fill 0.3s ease;
+  transition: fill 0.3s linear;
   fill: var(--background-color);
 }
 
 .card__icon-button:hover .like-icon .main-body {
   fill: var(--main-color);
-  transition: fill 0.3s ease 0.03s;
+  transition: fill 0.3s linear 0.05s;
 }
 
 .card__icon-button:active .like-icon .core {
-  transition: fill 0.3s ease;
+  transition: fill 0.3s linear;
   fill: red;
 }
 
 .card__icon-button:active .like-icon .main-body {
-  transition: fill 0.3s ease 0.03s;
+  transition: fill 0.3s linear 0.05s;
   fill: red;
 }
 
@@ -327,18 +328,9 @@
 }
 
 .floppy-img {
-  display: block;
   width: 21px;
   height: 21px;
-}
-
-.footer-button .floppy-img path {
-  transition: fill 0.5s ease;
-  fill: var(--main-color);
-}
-
-.footer-button:hover .floppy-img path {
-  fill: var(--background-color);
+  mix-blend-mode: difference;
 }
 
 .button-text {
@@ -359,7 +351,8 @@
 }
 
 .pop-up::backdrop {
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: black;
+  opacity: 0.75;
 }
 
 .pop-up[open] {
@@ -373,13 +366,9 @@
   gap: 20px;
 }
 
-.pop-up-img {
+.floppy-img-pop-up {
   width: 39px;
   height: 39px;
-}
-
-.pop-up-img path {
-  fill: var(--main-color);
 }
 
 .pop-up-text {
@@ -388,6 +377,7 @@
   font-size: 14px;
   text-transform: uppercase;
   line-height: 21px;
+  max-width: 232px;
 }
 
 .pop-up-button {
@@ -408,6 +398,7 @@
   transition: color 0.5s, box-shadow 0.5s ease;
   z-index: 1;
   box-shadow: none;
+  color: var(--main-color);
 }
 
 .button:focus-visible {
@@ -426,10 +417,11 @@
   transform-origin: left;
   transition: transform 0.5s ease;
   z-index: -1;
+
 }
 
 .button:hover::before  {
-  transform: scaleX(100%);
+  transform: scaleX(1);
 }
 
 .button:hover{
@@ -438,10 +430,12 @@
 
 .like-icon.is-liked .core {
   fill: var(--liked);
+  transition: fill 0.3s linear 0s;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--liked);
+  transition: fill 0.3s linear 0s;
 }
 
 
@@ -452,7 +446,7 @@
 
 .is-liked .heart {
   transform-origin: 50% 50%;
-  animation: heart 0.3s ease-in;
+  animation: heart 0.3s alternate;
   animation-delay: 0.1s;
 }
 
@@ -461,14 +455,13 @@
 }
 
 .is-liked .sparks {
-  animation: sparks 0.6s ease-in;
+  animation: sparks 0.6s alternate;
   animation-delay: 0.1s;
 }
 
 @media (375px >= width) {
   .header{
     width: 100%;
-    min-height: 327px;
     align-items: center;
   }
   .header-heading {
@@ -494,10 +487,6 @@
     right: 13px;
   }
   
-  .card-heading-description {
-    display: block;
-  }
-  
   .footer-button {
     flex-direction: column;
   }
@@ -518,6 +507,6 @@
   }
 
   .pop-up-text {
-    text-wrap: nowrap;
+    max-width: 196px;
   }
 }

@@ -1,7 +1,6 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 
 :root {
-  --font-family-press-start: 'PressStart2P-Regular', serif;
-  --font-family-Inter-variable: Inter-Variable, sans-serif;
-
+  --font-family-press-start: 'PressStart2P', fantasy;
+  --font-family-Inter-variable: 'Inter-Variable', sans-serif;
 }
