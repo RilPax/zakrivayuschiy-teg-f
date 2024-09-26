@@ -336,6 +336,7 @@
 .button-text {
   box-sizing: content-box;
   text-wrap: nowrap;
+  transition: color 0.5s, box-shadow 0.5s ease;
 }
 
 .pop-up {
@@ -364,6 +365,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  color: var(--main-color);
 }
 
 .floppy-img-pop-up {
@@ -395,7 +397,6 @@
 .button {
   color: var(--main-color);
   background-color: transparent;
-  transition: color 0.5s, box-shadow 0.5s ease;
   z-index: 1;
   box-shadow: none;
   color: var(--main-color);
@@ -424,7 +425,7 @@
   transform: scaleX(1);
 }
 
-.button:hover{
+.button:hover .button-text{
   color: var(--background-color);
 }
 
