@@ -129,7 +129,7 @@
   font-size: 14px;
   transform: translateX(-20px);
   filter: opacity(0.6);
-  animation: button-active 2s steps(1) infinite;
+  animation: button-active 1s steps(1) infinite;
 }
 
 .main {
@@ -292,6 +292,13 @@
   fill: red;
 }
 
+.button-like-box {
+  position: relative;
+  z-index: 1;
+  color: var(--main-color);
+  
+}
+
 .card__like-button {
   display: block;
   position: relative;
@@ -320,7 +327,7 @@
 .footer {
   margin: auto;
   margin-bottom: 105px;
-  background-color: var(--background-color);
+  background-color: black;
 }
 
 .footer-button {
@@ -336,19 +343,33 @@
   font-weight: var(--fw-regular);
   padding: 15px 19px;
   gap: 8px;
+  
 }
 
 .floppy-img {
   width: 21px;
   height: 21px;
-  mix-blend-mode: difference;
+  color: var(--main-color);
+  transition: color 0.5s ease;
+}
+
+.button:hover .floppy-img {
+  color: var(--background-color);
 }
 
 .button-text {
+  position: relative;
+  z-index: 2;
   box-sizing: content-box;
   text-wrap: nowrap;
-  transition: color 0.5s, box-shadow 0.5s ease;
+  color: var(--main-color);
+  transition: color 0.5s ease;
 }
+
+.button:hover .button-text {
+  color: var(--background-color);
+}
+
 
 .pop-up {
   display: none;
@@ -393,23 +414,31 @@
   max-width: 232px;
 }
 
+.pop-up-button-box {
+  position: relative;
+  z-index: 1;
+  max-width: 293px;
+}
+
 .pop-up-button {
   position: relative;
-  background-color: transparent;
+  background-color: var(--background-color);
   border: 2px solid var(--main-color);
   outline: none;
   font-family: var(--font-family-press-start);
   font-size: 14px;
-  max-width: 293px;
   padding: 10px 0px;
+  width: 100%;
   z-index: 1;
+  mix-blend-mode: difference;
 }
 
 .button {
-  background-color: transparent;
+  background-color: var(--background-color);
   z-index: 1;
   box-shadow: none;
-  color: var(--main-color);
+  mix-blend-mode: difference;
+  transition: box-shadow 0.5s ease;
 }
 
 .button:focus-visible {
@@ -433,10 +462,6 @@
 
 .button:hover::before  {
   transform: scaleX(1);
-}
-
-.button:hover .button-text{
-  color: var(--background-color);
 }
 
 .like-icon.is-liked .core {
@@ -513,7 +538,7 @@
     padding-top: 30px;
   }
 
-  .pop-up-button {
+  .pop-up-button-box {
     max-width: 257px;
   }
 
