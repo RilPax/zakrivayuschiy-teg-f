@@ -68,6 +68,7 @@
 .header-heading-decorative-stroke {
   font-size: clamp(49px, calc(49px + (65 - 49) * ((100vw - 375px) / (1440 - 375))), 65px);
   line-height: clamp(49px, calc(49px + (65 - 49) * ((100vw - 375px) / (1440 - 375))), 65px);
+  color: var(--main-color);
 }
 
 .header-heading-next-stroke {
@@ -179,6 +180,7 @@
   right: 25px;
   filter: opacity(0.5);
   z-index: 2;
+  -webkit-text-stroke: 1px var(--background-color);
 }
 
 .image {
@@ -261,7 +263,7 @@
 }
 
 .card__icon-button .like-icon .core {
-  transition: fill 0.3s linear 0.05s;
+  transition: fill 0.3s linear 0.03s;
   fill: var(--background-color);
 }
 
@@ -300,6 +302,15 @@
   padding: 10px 0px;
   outline: none;
   border: 2px solid var(--main-color);
+}
+
+.button__text {
+  color: var(--main-color);
+  transition: color 0.5s ease;
+}
+
+.card__like-button:hover .button__text {
+  color: var(--background-color);
 }
 
 .heart {
@@ -395,7 +406,6 @@
 }
 
 .button {
-  color: var(--main-color);
   background-color: transparent;
   z-index: 1;
   box-shadow: none;
@@ -441,7 +451,7 @@
 
 
 .like-icon.is-liked .contour {
-  transition: fill 0.3s ease 0.06s;
+  transition: fill 0.3s linear 0.06s;
   fill: var(--liked);
 }
 
