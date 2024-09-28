@@ -1,4 +1,4 @@
-/* В этом файле вы опишете значения переменных в разных цветовых схемах.
+/* В этом файле вы опишете значения  переменных в разных цветовых схемах.
 Придерживайтесь такого именования классов:
 ✦ theme-dark — класс тёмной темы
 ✦ theme-light — класс светлой темы
@@ -16,6 +16,7 @@
   --fw-regular: 400;
   --fw-bold: 700;
   --contour-status: var(--main-color);
+  --font-color: var(--background-color);
 }
 
 :root.theme-dark {
@@ -29,6 +30,7 @@
   --fw-regular: 465;
   --fw-bold: 785;
   --contour-status: var(--main-color);
+  --font-color: var(--main-color);
 }
 
 @media (prefers-color-scheme: light) {

@@ -129,7 +129,7 @@
   font-size: 14px;
   transform: translateX(-20px);
   filter: opacity(0.6);
-  animation: button-active 1s steps(1) infinite;
+  animation: button-active 1s ease-in-out infinite;
 }
 
 .main {
@@ -162,14 +162,6 @@
   border-right: none;
 }
 
-@supports((-webkit-text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: var(--background-color))) {
-  .image-text {
-      -webkit-text-stroke: 1px var(--background-color);
-      text-shadow: 1px var(--background-color);
-      text-shadow: none;
-  }
-} 
-
 .image-text {
   position: absolute;
   font-family: var(--font-family-press-start);
@@ -180,8 +172,15 @@
   right: 25px;
   filter: opacity(0.5);
   z-index: 2;
-  -webkit-text-stroke: 1px var(--background-color);
+  text-shadow: 1px var(--background-color);
 }
+
+@supports((-webkit-text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: var(--background-color))) {
+  .image-text {
+      -webkit-text-stroke: 1px var(--background-color);
+      text-shadow: none;
+  }
+} 
 
 .image {
   display: block;
@@ -308,16 +307,15 @@
   font-weight: 400;
   padding: 10px 0px;
   outline: none;
+  background-color: var(--background-color);
   border: 2px solid var(--main-color);
 }
 
 .button__text {
-  color: var(--main-color);
-  transition: color 0.5s ease;
-}
-
-.card__like-button:hover .button__text {
-  color: var(--background-color);
+  position: relative;
+  z-index: 2;
+  color: var(--font-color);
+  mix-blend-mode: difference;
 }
 
 .heart {
@@ -327,7 +325,6 @@
 .footer {
   margin: auto;
   margin-bottom: 105px;
-  background-color: black;
 }
 
 .footer-button {
@@ -347,14 +344,12 @@
 }
 
 .floppy-img {
+  position: relative;
+  z-index: 2;
   width: 21px;
   height: 21px;
-  color: var(--main-color);
-  transition: color 0.5s ease;
-}
-
-.button:hover .floppy-img {
-  color: var(--background-color);
+  color: var(--font-color);
+  mix-blend-mode: difference;
 }
 
 .button-text {
@@ -362,12 +357,8 @@
   z-index: 2;
   box-sizing: content-box;
   text-wrap: nowrap;
-  color: var(--main-color);
-  transition: color 0.5s ease;
-}
-
-.button:hover .button-text {
-  color: var(--background-color);
+  color: var(--font-color);
+  mix-blend-mode: difference;
 }
 
 
@@ -414,12 +405,6 @@
   max-width: 232px;
 }
 
-.pop-up-button-box {
-  position: relative;
-  z-index: 1;
-  max-width: 293px;
-}
-
 .pop-up-button {
   position: relative;
   background-color: var(--background-color);
@@ -430,15 +415,14 @@
   padding: 10px 0px;
   width: 100%;
   z-index: 1;
-  mix-blend-mode: difference;
 }
 
 .button {
   background-color: var(--background-color);
   z-index: 1;
   box-shadow: none;
-  mix-blend-mode: difference;
   transition: box-shadow 0.5s ease;
+  color: var(--background-color);
 }
 
 .button:focus-visible {
@@ -456,7 +440,7 @@
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease;
-  z-index: -1;
+  z-index: 1;
 
 }
 
